@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Chaco 2030 | Tu Voz Cuenta</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-tech { font-family: 'Orbitron', sans-serif; }
+    .glow-cyan { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+    .glow-green { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+
+  <!-- ENCABEZADO -->
+  <header class="bg-slate-900/90 border-b border-cyan-500/30 p-4 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-md mx-auto text-center">
+      <span class="text-[10px] font-mono tracking-widest text-cyan-400 uppercase bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/40">
+        🔒 Plataforma Oficial & Directa
+      </span>
+      <h1 class="font-tech text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-emerald-400 mt-2">
+        EL CHACO 2030
+      </h1>
+      <p class="text-xs text-slate-300 mt-0.5">Cuéntanos qué necesita tu barrio o parroquia</p>
+    </div>
+  </header>
+
+  <main class="max-w-md mx-auto p-4 space-y-6">
+
+    <!-- PASO 1: SELECCIONAR ZONA -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl">
+      <label class="block text-xs font-tech text-cyan-400 uppercase mb-2">1. Selecciona tu Parroquia o Sector:</label>
+      <select id="parroquia" class="w-full bg-slate-950 border border-cyan-500/40 text-slate-100 text-sm rounded-xl p-3 focus:outline-none focus:border-cyan-400">
+        <option value="El Chaco (Centro)">El Chaco (Cabecera Cantonal)</option>
+        <option value="Sardinas">Sardinas</option>
+        <option value="Santa Rosa">Santa Rosa</option>
+        <option value="Gonzalo Díaz de Pineda">Gonzalo Díaz de Pineda (El Chaco)</option>
+        <option value="Linares">Linares</option>
+        <option value="Oyacachi">Oyacachi</option>
+      </select>
+    </section>
+
+    <!-- PASO 2: SELECCIONAR CATEGORÍA -->
+    <section class="space-y-3">
+      <p class="text-xs font-tech text-cyan-400 uppercase tracking-wide">2. ¿En qué tema necesitas ayuda?</p>
+      
+      <div class="grid grid-cols-2 gap-3">
+        <button onclick="seleccionarTema('Agro y Ganadería', this)" class="btn-tema relative overflow-hidden rounded-2xl border border-emerald-500/40 bg-slate-900 p-3 text-left transition hover:scale-105 active:scale-95 group">
+          <div class="h-20 w-full rounded-xl bg-cover bg-center mb-2 filter brightness-90 group-hover:brightness-100" style="background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=400&q=80');"></div>
+          <span class="block text-xs font-bold text-emerald-400">🌾 Agro & Ganadería</span>
+          <span class="text-[10px] text-slate-400">Caminos, acopio, insumos</span>
+        </button>
+
+        <button onclick="seleccionarTema('Agua y Servicios', this)" class="btn-tema relative overflow-hidden rounded-2xl border border-cyan-500/40 bg-slate-900 p-3 text-left transition hover:scale-105 active:scale-95 group">
+          <div class="h-20 w-full rounded-xl bg-cover bg-center mb-2 filter brightness-90 group-hover:brightness-100" style="background-image: url('https://images.unsplash.com/photo-1581093458791-9f3c3250a8b0?auto=format&fit=crop&w=400&q=80');"></div>
+          <span class="block text-xs font-bold text-cyan-400">💧 Agua & Obras</span>
+          <span class="text-[10px] text-slate-400">Agua limpia, luz, alcantarillado</span>
+        </button>
+
+        <button onclick="seleccionarTema('Deporte y Juventud', this)" class="btn-tema relative overflow-hidden rounded-2xl border border-purple-500/40 bg-slate-900 p-3 text-left transition hover:scale-105 active:scale-95 group">
+          <div class="h-20 w-full rounded-xl bg-cover bg-center mb-2 filter brightness-90 group-hover:brightness-100" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=400&q=80');"></div>
+          <span class="block text-xs font-bold text-purple-400">⚽ Deporte & Juventud</span>
+          <span class="text-[10px] text-slate-400">Canchas, parques, talleres</span>
+        </button>
+
+        <button onclick="seleccionarTema('Turismo y Empleo', this)" class="btn-tema relative overflow-hidden rounded-2xl border border-amber-500/40 bg-slate-900 p-3 text-left transition hover:scale-105 active:scale-95 group">
+          <div class="h-20 w-full rounded-xl bg-cover bg-center mb-2 filter brightness-90 group-hover:brightness-100" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80');"></div>
+          <span class="block text-xs font-bold text-amber-400">🌿 Turismo & Trabajo</span>
+          <span class="text-[10px] text-slate-400">Emprendimientos, naturaleza</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PASO 3: PROPUESTA -->
+    <section class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-4">
+      <p class="text-xs font-tech text-cyan-400 uppercase">3. Deja tu propuesta o necesidad:</p>
+      
+      <button id="btn-voz" onclick="simularVoz()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-2xl shadow-lg glow-green transition flex items-center justify-center gap-3 active:scale-95">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path></svg>
+        <span class="text-sm">TOCA AQUÍ Y HABLA (MENSAJE DE VOZ)</span>
+      </button>
+
+      <div class="text-center text-[10px] text-slate-500 font-mono">- O ESCRIBE AQUÍ SI PREFIERES -</div>
+
+      <textarea id="texto-mensaje" rows="3" placeholder="Escribe aquí tu idea o el problema de tu barrio..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500"></textarea>
+
+      <button onclick="enviarMensajePrivado()" class="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold rounded-xl text-sm shadow-md transition glow-cyan">
+        🔒 ENVIAR PROPUESTA DE FORMA CONFIDENCIAL
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    let temaSeleccionado = "General";
+
+    function seleccionarTema(nombre, elemento) {
+      temaSeleccionado = nombre;
+      document.querySelectorAll('.btn-tema').forEach(btn => btn.classList.remove('ring-2', 'ring-cyan-400'));
+      elemento.classList.add('ring-2', 'ring-cyan-400');
+    }
+
+    function simularVoz() {
+      const btn = document.getElementById('btn-voz');
+      btn.classList.remove('bg-emerald-600');
+      btn.classList.add('bg-red-600', 'animate-pulse');
+      btn.innerHTML = `<span>🎙️ Escuchando... Habla ahora</span>`;
+
+      setTimeout(() => {
+        btn.classList.remove('bg-red-600', 'animate-pulse');
+        btn.classList.add('bg-emerald-600');
+        btn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 016 0v6a3 3 0 01-3 3z"></path></svg><span class="text-sm font-bold">✅ Audio Grabado con Éxito</span>`;
+      }, 4000);
+    }
+
+    function enviarMensajePrivado() {
+      const parroquia = document.getElementById('parroquia').value;
+      alert(`¡Gracias! Tu propuesta para ${parroquia} en el tema [${temaSeleccionado}] ha sido enviada de forma 100% CONFIDENCIAL.`);
+      document.getElementById('texto-mensaje').value = "";
+    }
+  </script>
+</body>
+</html>
